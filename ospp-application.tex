@@ -1,0 +1,739 @@
+\documentclass[a4paper,12pt]{article}
+
+% ========== 包引入 ==========
+% 支持中文
+\usepackage[UTF8]{ctex}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{pgfgantt}
+\usepackage{fontawesome5}  % 图标支持
+\usepackage{tcolorbox}     % 彩色文本框
+\usepackage{lipsum}        % 示例文本（可选）
+
+% ========== 页面设置 ==========
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% ========== 基础超链接设置 ==========
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,        % 目录链接设为黑色
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={OSPP 2025 项目申请书},
+    pdfauthor={您的姓名},
+}
+
+% ========== 页眉页脚设置 ==========
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small OSPP 2025 项目申请书}
+\lhead{\small \studentname}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ========== 标题格式设置 ==========
+\titleformat{\section}{\Large\bfseries\color{osppblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{osppdark}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{osppgray}}{\thesubsubsection}{1em}{}
+
+% ========== 定义颜色 ==========
+\definecolor{osppblue}{RGB}{51, 122, 183}
+\definecolor{osppgray}{RGB}{128, 128, 128}
+
+% ========== 自定义命令用于填写个人信息 ==========
+\newcommand{\studentname}{您的姓名}
+\newcommand{\studentid}{您的学号}
+\newcommand{\studentemail}{your.email@example.com}
+\newcommand{\studentphone}{您的电话}
+\newcommand{\studentuniversity}{您的大学}
+\newcommand{\studentmajor}{您的专业}
+\newcommand{\projecttitle}{项目标题}
+\newcommand{\communityname}{社区名称}
+\newcommand{\mentorname}{导师姓名}
+\newcommand{\mentoremail}{mentor@example.com}
+\newcommand{\projectdifficulty}{基础/进阶/高级}
+\newcommand{\projectreward}{奖金金额}
+
+% ========== 引入配置文件 ==========
+\IfFileExists{config.tex}{\input{config.tex}}{}
+
+% ========== TikZ 库设置 ==========
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc}
+
+% ========== 自定义样式框 ==========
+\tcbuselibrary{most}
+\newtcolorbox{tipbox}[1][]{
+    colback=ospplight,
+    colframe=osppblue,
+    title={\faLightbulb \; 提示},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{warningbox}[1][]{
+    colback=yellow!10,
+    colframe=orange,
+    title={\faExclamationTriangle \; 注意},
+    fonttitle=\bfseries,
+    #1
+}
+
+\newtcolorbox{infobox}[1][]{
+    colback=blue!5,
+    colframe=osppblue,
+    title={\faInfoCircle \; 信息},
+    fonttitle=\bfseries,
+    #1
+}
+
+\begin{document}
+
+% ========== 标题页 ==========
+\begin{titlepage}
+    \centering
+    
+    % OSPP Logo 区域和官方标识
+    \vspace{1cm}
+    
+    % 创建OSPP标识框
+    \begin{tcolorbox}[
+        colback=osppblue!10,
+        colframe=osppblue,
+        width=\textwidth,
+        arc=5pt,
+        boxrule=2pt
+    ]
+    \centering
+    {\Huge \textcolor{osppblue}{\textbf{开源软件供应链点亮计划}}} \\
+    \vspace{0.3cm}
+    {\LARGE \textcolor{osppblue}{\textbf{Open Source Promotion Plan}}} \\
+    \vspace{0.2cm}
+    {\Large \textcolor{osppgray}{\textbf{Summer 2025}}} \\
+    \vspace{0.3cm}
+    {\small \textcolor{osppgray}{官方网站：\url{https://summer-ospp.ac.cn/}}}
+    \end{tcolorbox}
+    
+    \vspace{2cm}
+    
+    % 项目标题
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=osppgray,
+        width=\textwidth,
+        arc=3pt
+    ]
+    {\huge \textcolor{osppdark}{\textbf{\projecttitle}}}
+    \end{tcolorbox}
+    
+    \vspace{1.5cm}
+    
+    % 申请信息表格
+    \begin{tcolorbox}[
+        colback=gray!5,
+        colframe=osppgray,
+        width=0.8\textwidth,
+        arc=3pt
+    ]
+    \begin{tabular}{rl}
+        \textbf{\textcolor{osppblue}{申请学生：}} & \textbf{\studentname} \\[0.2cm]
+        \textbf{学号：} & \studentid \\
+        \textbf{邮箱：} & \studentemail \\
+        \textbf{电话：} & \studentphone \\
+        \textbf{大学：} & \studentuniversity \\
+        \textbf{专业：} & \studentmajor \\[0.5cm]
+        \textbf{\textcolor{osppblue}{项目信息：}} & \\[0.2cm]
+        \textbf{社区：} & \communityname \\
+        \textbf{导师：} & \mentorname \\
+        \textbf{导师邮箱：} & \mentoremail \\
+        \textbf{项目难度：} & \projectdifficulty \\
+        \textbf{项目奖金：} & \projectreward \\
+    \end{tabular}
+    \end{tcolorbox}
+    
+    \vfill
+    
+    {\large \textcolor{osppgray}{申请日期：\today}}
+    
+\end{titlepage}
+
+% ========== 目录 ==========
+\tableofcontents
+\newpage
+
+% 正文开始
+\section{项目概述}
+
+\subsection{项目背景}
+% 请在此处描述项目的背景和意义
+在这里详细描述项目的背景，包括：
+\begin{itemize}
+    \item 项目所在的技术领域
+    \item 当前存在的问题或挑战
+    \item 项目的重要性和必要性
+    \item 预期的影响和价值
+\end{itemize}
+
+\subsection{项目目标}
+% 请在此处明确说明项目的具体目标
+明确列出项目的具体目标：
+\begin{enumerate}
+    \item 主要目标1
+    \item 主要目标2
+    \item 主要目标3
+\end{enumerate}
+
+\subsection{预期成果}
+% 请在此处描述项目完成后的预期成果
+描述项目完成后将产生的具体成果，包括但不限于：
+\begin{itemize}
+    \item 代码贡献
+    \item 文档更新
+    \item 性能提升
+    \item 新功能实现
+\end{itemize}
+
+\section{技术方案}
+
+\subsection{现有项目架构分析}
+
+\subsubsection{项目结构分析}
+% 根据自己的理解拆解目标开源项目，并能明确描述各个模块的功能
+详细分析目标开源项目的结构：
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{8cm}|l|}
+\hline
+\textbf{模块名称} & \textbf{功能描述} & \textbf{主要文件} \\
+\hline
+模块A & 功能描述A，负责处理用户输入和界面交互 & file1.py, file2.py \\
+\hline
+模块B & 功能描述B，负责业务逻辑处理和数据验证 & file3.js, file4.js \\
+\hline
+模块C & 功能描述C，负责底层数据存储和访问 & file5.cpp, file6.h \\
+\hline
+\end{tabular}
+\caption{项目模块分析表}
+\end{table}
+
+\subsubsection{技术栈分析}
+分析项目使用的技术栈：
+\begin{itemize}
+    \item \textbf{编程语言：}Python, JavaScript, C++等
+    \item \textbf{框架：}React, Django, Spring等
+    \item \textbf{数据库：}MySQL, PostgreSQL, MongoDB等
+    \item \textbf{其他工具：}Docker, Kubernetes, Git等
+\end{itemize}
+
+\subsection{需求分析}
+
+\subsubsection{功能需求}
+% 基于项目拆解，对项目描述中提出的需求进行分析
+根据项目描述，详细分析功能需求：
+
+\begin{enumerate}
+    \item \textbf{需求1：}详细描述需求1的内容和要求
+    \item \textbf{需求2：}详细描述需求2的内容和要求
+    \item \textbf{需求3：}详细描述需求3的内容和要求
+\end{enumerate}
+
+\subsubsection{非功能需求}
+分析性能、安全性、可用性等非功能需求：
+\begin{itemize}
+    \item \textbf{性能要求：}响应时间、吞吐量等
+    \item \textbf{安全要求：}认证、授权、数据保护等
+    \item \textbf{可用性要求：}可维护性、可扩展性等
+\end{itemize}
+
+\subsection{解决方案设计}
+
+\subsubsection{总体架构设计}
+% 明确描述自己的方案将对哪些模块中的哪些文件进行修改
+% 或自己的方案将会添加哪些模块，以及这些模块如何与现有模块通信
+
+\textbf{方案概述：}
+简要描述解决方案的整体思路和方法。
+
+\textbf{修改的现有模块：}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{模块} & \textbf{文件} & \textbf{修改内容} \\
+\hline
+模块A & file1.py & 添加新函数，优化算法，提升处理效率 \\
+\hline
+模块B & file3.js & 修改API接口，增加参数验证，完善错误处理 \\
+\hline
+\end{tabular}
+\caption{现有模块修改计划}
+\end{table}
+
+\textbf{新增模块：}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{5cm}|p{5cm}|}
+\hline
+\textbf{新模块} & \textbf{功能描述} & \textbf{与现有模块的通信方式} \\
+\hline
+新模块D & 数据处理和分析功能，提供统计和报告生成 & 通过REST API与模块A通信，使用JSON格式交换数据 \\
+\hline
+新模块E & 用户界面组件，提供交互式的前端界面 & 通过事件总线与模块B通信，使用WebSocket实时更新 \\
+\hline
+\end{tabular}
+\caption{新增模块设计}
+\end{table}
+
+\subsubsection{详细设计}
+
+\textbf{算法设计：}
+描述关键算法的设计思路和实现方法。
+
+\textbf{数据结构设计：}
+说明使用的数据结构和选择理由。
+
+\textbf{接口设计：}
+定义模块间的接口规范。
+
+\subsection{技术难点与解决策略}
+
+\subsubsection{预期技术难点}
+识别项目实施过程中可能遇到的技术难点：
+\begin{enumerate}
+    \item \textbf{难点1：}描述技术难点1
+    \item \textbf{难点2：}描述技术难点2
+    \item \textbf{难点3：}描述技术难点3
+\end{enumerate}
+
+\subsubsection{解决策略}
+针对每个技术难点提出具体的解决策略：
+\begin{itemize}
+    \item \textbf{对于难点1：}采用XX技术/方法来解决
+    \item \textbf{对于难点2：}参考YY论文/项目的经验
+    \item \textbf{对于难点3：}与导师和社区成员讨论
+\end{itemize}
+
+\subsection{参考资料}
+% Buff加成技巧：以引用的形式在项目申请书中列出其他项目的成功经验、论文等理论依据
+
+\begin{enumerate}
+    \item 相关论文：[论文标题] - [作者] - [发表年份]
+    \item 开源项目：[项目名称] - [GitHub链接]
+    \item 技术文档：[文档标题] - [链接]
+    \item 官方文档：[相关技术的官方文档]
+\end{enumerate}
+
+\section{时间规划}
+
+\subsection{项目阶段划分}
+% 建议时间规划的粒度不大于1周
+% 可以先将时间划分为几个大的阶段（如，4周为一个阶段），并总结每个阶段的核心任务
+
+本项目计划分为以下几个主要阶段：
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|p{8cm}|}
+\hline
+\textbf{阶段} & \textbf{时间周期} & \textbf{核心任务} \\
+\hline
+第一阶段 & 第1-4周 & 环境搭建、需求分析、详细设计 \\
+\hline
+第二阶段 & 第5-8周 & 核心功能开发、单元测试 \\
+\hline
+第三阶段 & 第9-12周 & 功能完善、集成测试、性能优化 \\
+\hline
+第四阶段 & 第13-16周 & 文档编写、代码重构、项目总结 \\
+\hline
+\end{tabular}
+\caption{项目阶段划分}
+\end{table}
+
+\subsection{详细周计划}
+
+\subsubsection{第一阶段：准备与设计（第1-4周）}
+
+\textbf{第1周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 熟悉项目代码库，搭建开发环境
+    \item 深入研究项目文档和相关技术
+    \item 与导师进行首次详细沟通
+    \item 完成开发环境配置和工具安装
+\end{itemize}
+
+\textbf{第2周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完成需求分析和功能规格说明
+    \item 设计详细的技术方案
+    \item 制定编码规范和测试策略
+    \item 准备第一次进度汇报
+\end{itemize}
+
+\textbf{第3周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完成系统架构设计
+    \item 设计数据库schema（如需要）
+    \item 定义API接口规范
+    \item 准备开发所需的第三方库和工具
+\end{itemize}
+
+\textbf{第4周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完成详细设计文档
+    \item 搭建测试框架
+    \item 创建项目开发分支
+    \item 第一阶段总结和汇报
+\end{itemize}
+
+\subsubsection{第二阶段：核心开发（第5-8周）}
+
+\textbf{第5周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 开始核心模块A的开发
+    \item 实现基础数据结构和算法
+    \item 编写对应的单元测试
+    \item 与导师讨论实现细节
+\end{itemize}
+
+\textbf{第6周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完成核心模块A的开发
+    \item 开始核心模块B的开发
+    \item 进行代码审查和重构
+    \item 更新相关文档
+\end{itemize}
+
+\textbf{第7周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完成核心模块B的开发
+    \item 实现模块间的接口和通信
+    \item 进行集成测试
+    \item 修复发现的bug
+\end{itemize}
+
+\textbf{第8周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完成第二阶段的功能开发
+    \item 全面的功能测试
+    \item 性能基准测试
+    \item 第二阶段总结汇报
+\end{itemize}
+
+\subsubsection{第三阶段：完善与优化（第9-12周）}
+
+\textbf{第9周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 实现剩余的功能模块
+    \item 完善错误处理机制
+    \item 添加日志和监控功能
+    \item 优化用户体验
+\end{itemize}
+
+\textbf{第10周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 进行全面的系统测试
+    \item 性能优化和内存管理
+    \item 安全性检查和加固
+    \item 兼容性测试
+\end{itemize}
+
+\textbf{第11周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 代码重构和清理
+    \item 完善测试覆盖率
+    \item 准备beta版本发布
+    \item 收集社区反馈
+\end{itemize}
+
+\textbf{第12周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 根据反馈进行功能调整
+    \item 最终的bug修复
+    \item 准备正式版本
+    \item 第三阶段总结
+\end{itemize}
+
+\subsubsection{第四阶段：收尾与总结（第13-16周）}
+
+\textbf{第13周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完善用户文档和开发者文档
+    \item 录制使用演示视频
+    \item 准备项目展示材料
+    \item 社区推广和宣传
+\end{itemize}
+
+\textbf{第14周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 最终代码审查和优化
+    \item 部署到生产环境（如适用）
+    \item 编写技术博客和分享文章
+    \item 准备项目总结报告
+\end{itemize}
+
+\textbf{第15周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 项目成果展示和汇报
+    \item 与社区成员分享经验
+    \item 讨论后续维护计划
+    \item 收集项目反馈和建议
+\end{itemize}
+
+\textbf{第16周（日期：XX月XX日 - XX月XX日）}
+\begin{itemize}
+    \item 完成最终项目报告
+    \item 整理项目资料和代码
+    \item 参与OSPP结项答辩
+    \item 项目正式结束和交接
+\end{itemize}
+
+\subsection{风险评估与应对措施}
+% 可以预留15%弹性时间，给debug留足空间
+
+\textbf{时间风险：}
+\begin{itemize}
+    \item \textbf{风险：}某些功能实现比预期复杂
+    \item \textbf{应对：}在每个阶段预留15\%的弹性时间用于debug和调整
+\end{itemize}
+
+\textbf{技术风险：}
+\begin{itemize}
+    \item \textbf{风险：}遇到难以解决的技术问题
+    \item \textbf{应对：}及时与导师沟通，寻求社区帮助，准备备选方案
+\end{itemize}
+
+\textbf{依赖风险：}
+\begin{itemize}
+    \item \textbf{风险：}第三方库或工具出现问题
+    \item \textbf{应对：}提前调研备选方案，保持灵活性
+\end{itemize}
+
+\section{个人简历}
+
+\subsection{基本信息}
+\begin{tabular}{rl}
+    \textbf{姓名：} & \studentname \\
+    \textbf{性别：} & 男/女 \\
+    \textbf{年龄：} & XX岁 \\
+    \textbf{邮箱：} & \studentemail \\
+    \textbf{电话：} & \studentphone \\
+    \textbf{GitHub：} & https://github.com/yourusername \\
+    \textbf{Gitee：} & https://gitee.com/yourusername \\
+\end{tabular}
+
+\subsection{教育背景}
+\begin{itemize}
+    \item \textbf{2021年9月 - 2025年6月：}\studentuniversity，\studentmajor，本科
+    \item \textbf{主要课程：}数据结构与算法、软件工程、数据库系统、计算机网络等
+    \item \textbf{GPA：}X.XX/4.0（排名：XX/XXX）
+\end{itemize}
+
+\subsection{技术技能}
+
+\subsubsection{编程语言}
+\begin{itemize}
+    \item \textbf{熟练掌握：}Python, Java, JavaScript
+    \item \textbf{了解使用：}C++, Go, Rust
+    \item \textbf{其他：}HTML, CSS, SQL
+\end{itemize}
+
+\subsubsection{开发框架与工具}
+\begin{itemize}
+    \item \textbf{前端：}React, Vue.js, Bootstrap
+    \item \textbf{后端：}Django, Flask, Spring Boot
+    \item \textbf{数据库：}MySQL, PostgreSQL, MongoDB
+    \item \textbf{工具：}Git, Docker, Linux, VS Code, IntelliJ IDEA
+\end{itemize}
+
+\subsection{项目经验}
+
+\subsubsection{开源贡献}
+% 必填项：开源平台的用户ID（GitHub、Gitee等）
+% 应该尽可能和自己所申请的项目相关
+
+\textbf{项目1：为XX开源项目贡献代码}
+\begin{itemize}
+    \item \textbf{时间：}2024年X月 - 2024年X月
+    \item \textbf{角色：}贡献者
+    \item \textbf{贡献内容：}修复了XX个bug，添加了XX功能，提交了XX个PR
+    \item \textbf{技术栈：}Python, Django, PostgreSQL
+    \item \textbf{项目链接：}\url{https://github.com/project/repo}
+\end{itemize}
+
+\textbf{项目2：参与XX社区活动}
+\begin{itemize}
+    \item \textbf{时间：}2024年X月 - 2024年X月
+    \item \textbf{角色：}活跃成员
+    \item \textbf{贡献内容：}参与代码审查，帮助新成员，翻译文档
+    \item \textbf{社区：}XX开源社区
+\end{itemize}
+
+\subsubsection{个人项目}
+
+\textbf{项目1：XX管理系统}
+\begin{itemize}
+    \item \textbf{时间：}2024年X月 - 2024年X月
+    \item \textbf{描述：}开发了一个功能完整的XX管理系统
+    \item \textbf{技术栈：}React, Node.js, MongoDB
+    \item \textbf{特点：}支持XX功能，日活跃用户XXX人
+    \item \textbf{代码：}\url{https://github.com/yourusername/project}
+\end{itemize}
+
+\textbf{项目2：XX算法实现}
+\begin{itemize}
+    \item \textbf{时间：}2024年X月 - 2024年X月
+    \item \textbf{描述：}实现了XX算法，并进行了性能优化
+    \item \textbf{技术栈：}Python, NumPy, Matplotlib
+    \item \textbf{成果：}性能提升XX\%，获得XX个star
+\end{itemize}
+
+\subsection{竞赛与获奖}
+\begin{itemize}
+    \item \textbf{2024年X月：}XX程序设计竞赛，获得XX奖
+    \item \textbf{2023年X月：}XX创新大赛，获得XX奖
+    \item \textbf{2023年X月：}XX奖学金获得者
+\end{itemize}
+
+\subsection{其他经历}
+\begin{itemize}
+    \item \textbf{实习经历：}在XX公司担任软件开发实习生（2024年X月-X月）
+    \item \textbf{社团活动：}担任XX社团技术部部长
+    \item \textbf{志愿服务：}参与XX技术分享活动的组织工作
+\end{itemize}
+
+\section{申请动机}
+
+\subsection{选择该项目的原因}
+详细说明为什么选择这个特定的项目：
+\begin{itemize}
+    \item 与个人技术兴趣和专业方向的契合度
+    \item 对该技术领域的热情和理解
+    \item 希望通过项目学习和掌握的技能
+    \item 对开源社区的认识和参与意愿
+\end{itemize}
+
+\subsection{期望与目标}
+\begin{itemize}
+    \item \textbf{技术目标：}希望通过项目掌握XX技术，提升XX能力
+    \item \textbf{个人发展：}希望在开源贡献、团队协作等方面得到锻炼
+    \item \textbf{社区贡献：}希望为开源社区做出有意义的贡献
+    \item \textbf{长期规划：}项目结束后继续参与社区，成为长期贡献者
+\end{itemize}
+
+\subsection{承诺与保证}
+\begin{itemize}
+    \item 保证每周投入至少30小时进行项目开发
+    \item 按时完成各阶段的任务和交付物
+    \item 积极与导师沟通，主动寻求帮助和指导
+    \item 遵守开源社区的行为准则和开发规范
+    \item 项目结束后继续维护和改进代码
+\end{itemize}
+
+\section{附录}
+
+\subsection{项目时间表（甘特图）}
+% 使用pgfgantt包创建甘特图
+\begin{figure}[H]
+\centering
+\begin{ganttchart}[
+    x unit=0.8cm,
+    y unit title=0.5cm,
+    y unit chart=0.4cm,
+    hgrid,
+    vgrid,
+    title height=1,
+    bar height=0.3,
+    group height=0.3
+]{1}{16}
+
+% 标题
+\gantttitle{OSPP 2025 项目时间规划}{16} \\
+\gantttitle{第1-4周}{4}
+\gantttitle{第5-8周}{4}
+\gantttitle{第9-12周}{4}
+\gantttitle{第13-16周}{4} \\
+
+% 任务组
+\ganttgroup{第一阶段：准备与设计}{1}{4} \\
+\ganttbar{环境搭建}{1}{1} \\
+\ganttbar{需求分析}{2}{2} \\
+\ganttbar{架构设计}{3}{3} \\
+\ganttbar{详细设计}{4}{4} \\
+
+\ganttgroup{第二阶段：核心开发}{5}{8} \\
+\ganttbar{模块A开发}{5}{6} \\
+\ganttbar{模块B开发}{6}{7} \\
+\ganttbar{集成测试}{7}{8} \\
+
+\ganttgroup{第三阶段：完善与优化}{9}{12} \\
+\ganttbar{功能完善}{9}{10} \\
+\ganttbar{性能优化}{10}{11} \\
+\ganttbar{系统测试}{11}{12} \\
+
+\ganttgroup{第四阶段：收尾与总结}{13}{16} \\
+\ganttbar{文档编写}{13}{14} \\
+\ganttbar{项目总结}{14}{15} \\
+\ganttbar{成果展示}{15}{16} \\
+
+% 里程碑
+\ganttmilestone{设计完成}{4}
+\ganttmilestone{核心功能完成}{8}
+\ganttmilestone{系统完成}{12}
+\ganttmilestone{项目结束}{16}
+
+\end{ganttchart}
+\caption{项目时间规划甘特图}
+\end{figure}
+
+\subsection{技术架构图}
+% 这里可以插入技术架构图
+\begin{figure}[H]
+\centering
+% 如果有架构图，可以用以下方式插入
+% \includegraphics[width=0.8\textwidth]{architecture.png}
+\begin{tikzpicture}[node distance=2cm, auto]
+    % 定义节点样式
+    \tikzstyle{box} = [rectangle, draw, fill=blue!20, text width=3cm, text centered, rounded corners, minimum height=1cm]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+    
+    % 创建节点
+    \node [box] (frontend) {前端界面};
+    \node [box, below of=frontend] (api) {API层};
+    \node [box, below of=api] (service) {业务逻辑层};
+    \node [box, below of=service] (data) {数据访问层};
+    \node [box, below of=data] (database) {数据库};
+    
+    % 创建箭头
+    \draw [arrow] (frontend) -- (api);
+    \draw [arrow] (api) -- (service);
+    \draw [arrow] (service) -- (data);
+    \draw [arrow] (data) -- (database);
+\end{tikzpicture}
+\caption{系统架构图示例}
+\end{figure}
+
+\subsection{联系方式}
+如有任何问题，请通过以下方式联系：
+\begin{itemize}
+    \item \textbf{邮箱：}\studentemail
+    \item \textbf{电话：}\studentphone
+    \item \textbf{GitHub：}https://github.com/yourusername
+    \item \textbf{社区交流群：}XXXX（微信/QQ群号）
+\end{itemize}
+
+\end{document} 

@@ -1,0 +1,155 @@
+% OSPP 申请书示例代码库
+% 包含各种常用的 LaTeX 示例和模板
+
+% ========== 列表示例 ==========
+% 基础列表
+\begin{itemize}
+    \item 第一项
+    \item 第二项
+    \item 第三项
+\end{itemize}
+
+% 编号列表
+\begin{enumerate}
+    \item 第一步
+    \item 第二步
+    \item 第三步
+\end{enumerate}
+
+% 自定义列表
+\begin{itemize}[label=\textbullet]
+    \item 使用自定义符号的列表项
+    \item 另一个列表项
+\end{itemize}
+
+% ========== 表格示例 ==========
+% 基础表格
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{列1} & \textbf{列2} & \textbf{列3} \\
+\hline
+内容1 & 内容2 & 内容3 \\
+\hline
+内容4 & 内容5 & 内容6 \\
+\hline
+\end{tabular}
+\caption{表格标题}
+\label{tab:example}
+\end{table}
+
+% 复杂表格（适用于技术方案）
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{3cm}|p{4cm}|p{6cm}|}
+\hline
+\textbf{技术栈} & \textbf{版本要求} & \textbf{使用说明} \\
+\hline
+Python & 3.8+ & 主要开发语言，用于数据处理和算法实现 \\
+\hline
+React & 18.0+ & 前端框架，负责用户界面开发 \\
+\hline
+Docker & 20.10+ & 容器化部署，确保环境一致性 \\
+\hline
+\end{tabular}
+\caption{技术栈详细说明}
+\end{table}
+
+% ========== 代码示例 ==========
+% 行内代码
+使用 \texttt{git clone} 命令克隆仓库。
+
+% 代码块
+\begin{verbatim}
+def hello_world():
+    print("Hello, OSPP!")
+    return True
+\end{verbatim}
+
+% ========== 数学公式示例 ==========
+% 行内公式
+算法的时间复杂度为 $O(n \log n)$。
+
+% 独立公式
+\begin{equation}
+E = mc^2
+\end{equation}
+
+% ========== 图片示例 ==========
+% 插入图片（需要graphicx包）
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.8\textwidth]{images/architecture.png}
+\caption{系统架构图}
+\label{fig:architecture}
+\end{figure}
+
+% ========== 引用示例 ==========
+% 文献引用格式
+根据研究\cite{author2023}，该方法可以提升30\%的性能。
+
+% 网址引用
+更多信息请参考 \url{https://summer-ospp.ac.cn/}。
+
+% ========== 颜色文本示例 ==========
+\textcolor{blue}{蓝色文本}
+\textcolor{red}{红色文本}
+\textcolor{osppblue}{OSPP主题色文本}
+
+% ========== 强调文本示例 ==========
+\textbf{粗体文本}
+\textit{斜体文本}
+\underline{下划线文本}
+
+% ========== 项目时间线示例 ==========
+\begin{itemize}
+    \item \textbf{第1周}：环境搭建与需求分析
+    \begin{itemize}
+        \item 安装开发环境
+        \item 阅读项目文档
+        \item 与导师初次沟通
+    \end{itemize}
+    \item \textbf{第2周}：详细设计
+    \begin{itemize}
+        \item 完成系统设计文档
+        \item 确定技术选型
+        \item 制定编码规范
+    \end{itemize}
+\end{itemize}
+
+% ========== 技能评估表示例 ==========
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{技能} & \textbf{初级} & \textbf{中级} & \textbf{高级} & \textbf{专家} \\
+\hline
+Python & & & \checkmark & \\
+\hline
+JavaScript & & \checkmark & & \\
+\hline
+Docker & & \checkmark & & \\
+\hline
+Git & & & \checkmark & \\
+\hline
+\end{tabular}
+\caption{个人技能评估}
+\end{table}
+
+% ========== 风险评估矩阵示例 ==========
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|c|c|p{5cm}|}
+\hline
+\textbf{风险} & \textbf{概率} & \textbf{影响} & \textbf{应对措施} \\
+\hline
+技术难度超出预期 & 中 & 高 & 提前学习相关技术，寻求导师指导 \\
+\hline
+第三方依赖问题 & 低 & 中 & 准备备选方案，定期更新依赖 \\
+\hline
+时间安排冲突 & 中 & 中 & 制定详细计划，预留缓冲时间 \\
+\hline
+\end{tabular}
+\caption{项目风险评估矩阵}
+\end{table} 

@@ -1,0 +1,79 @@
+% OSPP 申请书配置文件
+% 请在此文件中填写您的个人信息和项目信息
+
+% ========== 个人基本信息 ==========
+\renewcommand{\studentname}{张三}                    % 您的姓名
+\renewcommand{\studentid}{2021123456}               % 学号
+\renewcommand{\studentemail}{zhangsan@example.com}  % 邮箱
+\renewcommand{\studentphone}{138-0000-0000}         % 电话
+\renewcommand{\studentuniversity}{某某大学}          % 大学
+\renewcommand{\studentmajor}{计算机科学与技术}       % 专业
+
+% ========== 项目相关信息 ==========
+\renewcommand{\projecttitle}{基于深度学习的开源项目漏洞检测系统}  % 项目标题
+\renewcommand{\communityname}{Apache Software Foundation}        % 社区名称
+\renewcommand{\mentorname}{李导师}                                % 导师姓名
+\renewcommand{\mentoremail}{liteacher@apache.org}               % 导师邮箱
+\renewcommand{\projectdifficulty}{进阶}                          % 项目难度：基础/进阶/高级
+\renewcommand{\projectreward}{12000元}                          % 项目奖金
+
+% ========== 页面格式设置 ==========
+% 修复页眉高度警告
+\setlength{\headheight}{14.5pt}
+
+% 页面边距（如需调整请取消注释）
+% \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+
+% ========== 颜色设置 ==========
+% OSPP 官方主题色（参考官网 https://summer-ospp.ac.cn/）
+\definecolor{osppblue}{RGB}{51, 122, 183}      % OSPP主蓝色
+\definecolor{osppgray}{RGB}{108, 117, 125}     % OSPP灰色
+\definecolor{ospplight}{RGB}{248, 249, 250}    % OSPP浅色背景
+\definecolor{osppdark}{RGB}{52, 58, 64}        % OSPP深色文字
+
+% 辅助颜色
+\definecolor{successgreen}{RGB}{40, 167, 69}   % 成功绿色
+\definecolor{warningorange}{RGB}{255, 193, 7}  % 警告橙色
+\definecolor{dangerred}{RGB}{220, 53, 69}      % 危险红色
+
+% ========== 超链接颜色设置 ==========
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,        % 目录链接改为黑色
+    filecolor=osppblue,     
+    urlcolor=osppblue,      % 网址链接使用OSPP蓝色
+    citecolor=osppblue,     % 引用链接使用OSPP蓝色
+    pdftitle={OSPP 2025 项目申请书 - \projecttitle},
+    pdfauthor={\studentname},
+    pdfsubject={开源软件供应链点亮计划 2025},
+    pdfkeywords={OSPP, 开源, 申请书, \studentname}
+}
+
+% ========== 字体设置 ==========
+% 如果需要使用特定字体，可以在此设置
+% \setCJKmainfont{SimSun}                       % 设置中文主字体
+% \setCJKsansfont{SimHei}                       % 设置中文无衬线字体
+
+% ========== 自定义命令 ==========
+% 定义一些常用的格式命令
+\newcommand{\highlight}[1]{\textcolor{osppblue}{\textbf{#1}}}
+\newcommand{\important}[1]{\textcolor{dangerred}{\textbf{#1}}}
+\newcommand{\note}[1]{\textcolor{osppgray}{\textit{#1}}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% 定义项目相关的命令
+\newcommand{\githuburl}{https://github.com/yourusername}
+\newcommand{\giteeurl}{https://gitee.com/yourusername}
+
+% ========== 表格样式设置 ==========
+% 设置表格的默认样式
+\renewcommand{\arraystretch}{1.2}  % 增加表格行间距
+
+% ========== 列表样式设置 ==========
+% 自定义列表项符号
+\renewcommand{\labelitemi}{\textcolor{osppblue}{\textbullet}}
+\renewcommand{\labelitemii}{\textcolor{osppgray}{\textendash}}
+
+% ========== 段落设置 ==========
+\setlength{\parindent}{2em}        % 段落缩进
+\setlength{\parskip}{0.5em}        % 段落间距 
