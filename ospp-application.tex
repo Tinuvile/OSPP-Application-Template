@@ -9,13 +9,13 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{enumitem}
+\usepackage{array}              % 表格支持（必须在tabularx之前）
 \usepackage{tabularx}
 \usepackage{colortbl}
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{float}
-\usepackage{array}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -107,18 +107,16 @@
 \begin{titlepage}
     \centering
     
-    % OSPP Logo 区域和官方标识
-    \vspace{1cm}
+    % OSPP Logo 和官方标识
+    \vspace{0.5cm}
     
-    % 创建OSPP标识框
-    \begin{tcolorbox}[
-        colback=osppblue!10,
-        colframe=osppblue,
-        width=\textwidth,
-        arc=5pt,
-        boxrule=2pt
-    ]
-    \centering
+    % OSPP图标（如果存在）
+    \IfFileExists{image/OSPP.png}{
+        \includegraphics[width=3cm]{image/OSPP.png} \\
+        \vspace{0.5cm}
+    }{}
+    
+    % OSPP标题文字
     {\Huge \textcolor{osppblue}{\textbf{开源软件供应链点亮计划}}} \\
     \vspace{0.3cm}
     {\LARGE \textcolor{osppblue}{\textbf{Open Source Promotion Plan}}} \\
@@ -126,44 +124,29 @@
     {\Large \textcolor{osppgray}{\textbf{Summer 2025}}} \\
     \vspace{0.3cm}
     {\small \textcolor{osppgray}{官方网站：\url{https://summer-ospp.ac.cn/}}}
-    \end{tcolorbox}
     
     \vspace{2cm}
     
-    % 项目标题
-    \begin{tcolorbox}[
-        colback=white,
-        colframe=osppgray,
-        width=\textwidth,
-        arc=3pt
-    ]
+    % 项目标题（去除边框）
     {\huge \textcolor{osppdark}{\textbf{\projecttitle}}}
-    \end{tcolorbox}
     
     \vspace{1.5cm}
     
-    % 申请信息表格
-    \begin{tcolorbox}[
-        colback=gray!5,
-        colframe=osppgray,
-        width=0.8\textwidth,
-        arc=3pt
-    ]
+    % 申请信息表格（去除边框）
     \begin{tabular}{rl}
-        \textbf{\textcolor{osppblue}{申请学生：}} & \textbf{\studentname} \\[0.2cm]
-        \textbf{学号：} & \studentid \\
-        \textbf{邮箱：} & \studentemail \\
-        \textbf{电话：} & \studentphone \\
-        \textbf{大学：} & \studentuniversity \\
+        \textbf{\textcolor{osppblue}{申请学生：}} & \textbf{\studentname} \\[0.3cm]
+        \textbf{学号：} & \studentid \\[0.1cm]
+        \textbf{邮箱：} & \studentemail \\[0.1cm]
+        \textbf{电话：} & \studentphone \\[0.1cm]
+        \textbf{大学：} & \studentuniversity \\[0.1cm]
         \textbf{专业：} & \studentmajor \\[0.5cm]
-        \textbf{\textcolor{osppblue}{项目信息：}} & \\[0.2cm]
-        \textbf{社区：} & \communityname \\
-        \textbf{导师：} & \mentorname \\
-        \textbf{导师邮箱：} & \mentoremail \\
-        \textbf{项目难度：} & \projectdifficulty \\
+        \textbf{\textcolor{osppblue}{项目信息：}} & \\[0.3cm]
+        \textbf{社区：} & \communityname \\[0.1cm]
+        \textbf{导师：} & \mentorname \\[0.1cm]
+        \textbf{导师邮箱：} & \mentoremail \\[0.1cm]
+        \textbf{项目难度：} & \projectdifficulty \\[0.1cm]
         \textbf{项目奖金：} & \projectreward \\
     \end{tabular}
-    \end{tcolorbox}
     
     \vfill
     
@@ -217,15 +200,15 @@
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|p{8cm}|l|}
+\begin{tabular}{|l|l|l|}
 \hline
 \textbf{模块名称} & \textbf{功能描述} & \textbf{主要文件} \\
 \hline
-模块A & 功能描述A，负责处理用户输入和界面交互 & file1.py, file2.py \\
+模块A & 处理用户输入和界面交互 & file1.py, file2.py \\
 \hline
-模块B & 功能描述B，负责业务逻辑处理和数据验证 & file3.js, file4.js \\
+模块B & 业务逻辑处理和数据验证 & file3.js, file4.js \\
 \hline
-模块C & 功能描述C，负责底层数据存储和访问 & file5.cpp, file6.h \\
+模块C & 底层数据存储和访问 & file5.cpp, file6.h \\
 \hline
 \end{tabular}
 \caption{项目模块分析表}
@@ -272,13 +255,13 @@
 \textbf{修改的现有模块：}
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|p{6cm}|}
+\begin{tabular}{|l|l|l|}
 \hline
 \textbf{模块} & \textbf{文件} & \textbf{修改内容} \\
 \hline
-模块A & file1.py & 添加新函数，优化算法，提升处理效率 \\
+模块A & file1.py & 添加新函数，优化算法 \\
 \hline
-模块B & file3.js & 修改API接口，增加参数验证，完善错误处理 \\
+模块B & file3.js & 修改API接口，参数验证 \\
 \hline
 \end{tabular}
 \caption{现有模块修改计划}
@@ -287,13 +270,13 @@
 \textbf{新增模块：}
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|p{5cm}|p{5cm}|}
+\begin{tabular}{|l|l|l|}
 \hline
-\textbf{新模块} & \textbf{功能描述} & \textbf{与现有模块的通信方式} \\
+\textbf{新模块} & \textbf{功能描述} & \textbf{通信方式} \\
 \hline
-新模块D & 数据处理和分析功能，提供统计和报告生成 & 通过REST API与模块A通信，使用JSON格式交换数据 \\
+新模块D & 数据处理和分析功能 & REST API与模块A通信 \\
 \hline
-新模块E & 用户界面组件，提供交互式的前端界面 & 通过事件总线与模块B通信，使用WebSocket实时更新 \\
+新模块E & 用户界面组件 & 事件总线与模块B通信 \\
 \hline
 \end{tabular}
 \caption{新增模块设计}
@@ -348,17 +331,17 @@
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|p{8cm}|}
+\begin{tabular}{|c|c|l|}
 \hline
 \textbf{阶段} & \textbf{时间周期} & \textbf{核心任务} \\
 \hline
-第一阶段 & 第1-4周 & 环境搭建、需求分析、详细设计 \\
+第一阶段 & 第1-4周 & 环境搭建、需求分析 \\
 \hline
 第二阶段 & 第5-8周 & 核心功能开发、单元测试 \\
 \hline
-第三阶段 & 第9-12周 & 功能完善、集成测试、性能优化 \\
+第三阶段 & 第9-12周 & 功能完善、集成测试 \\
 \hline
-第四阶段 & 第13-16周 & 文档编写、代码重构、项目总结 \\
+第四阶段 & 第13-16周 & 文档编写、项目总结 \\
 \hline
 \end{tabular}
 \caption{项目阶段划分}
@@ -523,127 +506,6 @@
     \item \textbf{应对：}提前调研备选方案，保持灵活性
 \end{itemize}
 
-\section{个人简历}
-
-\subsection{基本信息}
-\begin{tabular}{rl}
-    \textbf{姓名：} & \studentname \\
-    \textbf{性别：} & 男/女 \\
-    \textbf{年龄：} & XX岁 \\
-    \textbf{邮箱：} & \studentemail \\
-    \textbf{电话：} & \studentphone \\
-    \textbf{GitHub：} & https://github.com/yourusername \\
-    \textbf{Gitee：} & https://gitee.com/yourusername \\
-\end{tabular}
-
-\subsection{教育背景}
-\begin{itemize}
-    \item \textbf{2021年9月 - 2025年6月：}\studentuniversity，\studentmajor，本科
-    \item \textbf{主要课程：}数据结构与算法、软件工程、数据库系统、计算机网络等
-    \item \textbf{GPA：}X.XX/4.0（排名：XX/XXX）
-\end{itemize}
-
-\subsection{技术技能}
-
-\subsubsection{编程语言}
-\begin{itemize}
-    \item \textbf{熟练掌握：}Python, Java, JavaScript
-    \item \textbf{了解使用：}C++, Go, Rust
-    \item \textbf{其他：}HTML, CSS, SQL
-\end{itemize}
-
-\subsubsection{开发框架与工具}
-\begin{itemize}
-    \item \textbf{前端：}React, Vue.js, Bootstrap
-    \item \textbf{后端：}Django, Flask, Spring Boot
-    \item \textbf{数据库：}MySQL, PostgreSQL, MongoDB
-    \item \textbf{工具：}Git, Docker, Linux, VS Code, IntelliJ IDEA
-\end{itemize}
-
-\subsection{项目经验}
-
-\subsubsection{开源贡献}
-% 必填项：开源平台的用户ID（GitHub、Gitee等）
-% 应该尽可能和自己所申请的项目相关
-
-\textbf{项目1：为XX开源项目贡献代码}
-\begin{itemize}
-    \item \textbf{时间：}2024年X月 - 2024年X月
-    \item \textbf{角色：}贡献者
-    \item \textbf{贡献内容：}修复了XX个bug，添加了XX功能，提交了XX个PR
-    \item \textbf{技术栈：}Python, Django, PostgreSQL
-    \item \textbf{项目链接：}\url{https://github.com/project/repo}
-\end{itemize}
-
-\textbf{项目2：参与XX社区活动}
-\begin{itemize}
-    \item \textbf{时间：}2024年X月 - 2024年X月
-    \item \textbf{角色：}活跃成员
-    \item \textbf{贡献内容：}参与代码审查，帮助新成员，翻译文档
-    \item \textbf{社区：}XX开源社区
-\end{itemize}
-
-\subsubsection{个人项目}
-
-\textbf{项目1：XX管理系统}
-\begin{itemize}
-    \item \textbf{时间：}2024年X月 - 2024年X月
-    \item \textbf{描述：}开发了一个功能完整的XX管理系统
-    \item \textbf{技术栈：}React, Node.js, MongoDB
-    \item \textbf{特点：}支持XX功能，日活跃用户XXX人
-    \item \textbf{代码：}\url{https://github.com/yourusername/project}
-\end{itemize}
-
-\textbf{项目2：XX算法实现}
-\begin{itemize}
-    \item \textbf{时间：}2024年X月 - 2024年X月
-    \item \textbf{描述：}实现了XX算法，并进行了性能优化
-    \item \textbf{技术栈：}Python, NumPy, Matplotlib
-    \item \textbf{成果：}性能提升XX\%，获得XX个star
-\end{itemize}
-
-\subsection{竞赛与获奖}
-\begin{itemize}
-    \item \textbf{2024年X月：}XX程序设计竞赛，获得XX奖
-    \item \textbf{2023年X月：}XX创新大赛，获得XX奖
-    \item \textbf{2023年X月：}XX奖学金获得者
-\end{itemize}
-
-\subsection{其他经历}
-\begin{itemize}
-    \item \textbf{实习经历：}在XX公司担任软件开发实习生（2024年X月-X月）
-    \item \textbf{社团活动：}担任XX社团技术部部长
-    \item \textbf{志愿服务：}参与XX技术分享活动的组织工作
-\end{itemize}
-
-\section{申请动机}
-
-\subsection{选择该项目的原因}
-详细说明为什么选择这个特定的项目：
-\begin{itemize}
-    \item 与个人技术兴趣和专业方向的契合度
-    \item 对该技术领域的热情和理解
-    \item 希望通过项目学习和掌握的技能
-    \item 对开源社区的认识和参与意愿
-\end{itemize}
-
-\subsection{期望与目标}
-\begin{itemize}
-    \item \textbf{技术目标：}希望通过项目掌握XX技术，提升XX能力
-    \item \textbf{个人发展：}希望在开源贡献、团队协作等方面得到锻炼
-    \item \textbf{社区贡献：}希望为开源社区做出有意义的贡献
-    \item \textbf{长期规划：}项目结束后继续参与社区，成为长期贡献者
-\end{itemize}
-
-\subsection{承诺与保证}
-\begin{itemize}
-    \item 保证每周投入至少30小时进行项目开发
-    \item 按时完成各阶段的任务和交付物
-    \item 积极与导师沟通，主动寻求帮助和指导
-    \item 遵守开源社区的行为准则和开发规范
-    \item 项目结束后继续维护和改进代码
-\end{itemize}
-
 \section{附录}
 
 \subsection{项目时间表（甘特图）}
@@ -734,6 +596,54 @@
     \item \textbf{电话：}\studentphone
     \item \textbf{GitHub：}https://github.com/yourusername
     \item \textbf{社区交流群：}XXXX（微信/QQ群号）
+\end{itemize}
+
+\section{申请动机}
+
+\subsection{选择该项目的原因}
+详细说明为什么选择这个特定的项目：
+\begin{itemize}
+    \item 与个人技术兴趣和专业方向的契合度
+    \item 对该技术领域的热情和理解
+    \item 希望通过项目学习和掌握的技能
+    \item 对开源社区的认识和参与意愿
+\end{itemize}
+
+\subsection{期望与目标}
+\begin{itemize}
+    \item \textbf{技术目标：}希望通过项目掌握XX技术，提升XX能力
+    \item \textbf{个人发展：}希望在开源贡献、团队协作等方面得到锻炼
+    \item \textbf{社区贡献：}希望为开源社区做出有意义的贡献
+    \item \textbf{长期规划：}项目结束后继续参与社区，成为长期贡献者
+\end{itemize}
+
+\subsection{承诺与保证}
+\begin{itemize}
+    \item 保证每周投入至少30小时进行项目开发
+    \item 按时完成各阶段的任务和交付物
+    \item 积极与导师沟通，主动寻求帮助和指导
+    \item 遵守开源社区的行为准则和开发规范
+    \item 项目结束后继续维护和改进代码
+\end{itemize}
+
+\section{个人简历}
+
+\textcolor{osppblue}{\textbf{注：}}个人简历已独立为一份文档，请参阅《\textcolor{osppblue}{\textbf{个人简历.pdf}}》文件。
+
+该简历包含以下内容：
+\begin{itemize}
+    \item 基本信息和教育背景
+    \item 技术技能和开发经验
+    \item 开源贡献和项目经历
+    \item 竞赛获奖和实习经历
+    \item 社团活动和志愿服务
+    \item 技能证书和自我评价
+\end{itemize}
+
+简历文件可通过以下方式编译生成：
+\begin{itemize}
+    \item 使用 \texttt{pdflatex personal-resume.tex} 命令
+    \item 或使用 \texttt{xelatex personal-resume.tex} 命令（推荐）
 \end{itemize}
 
 \end{document} 

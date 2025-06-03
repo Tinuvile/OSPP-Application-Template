@@ -1,0 +1,473 @@
+\documentclass[a4paper,12pt]{article}
+
+% ========== 包引入 ==========
+% 支持中文
+\usepackage[UTF8]{ctex}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{fontawesome5}  % 图标支持
+\usepackage{tcolorbox}     % 彩色文本框
+
+% ========== 页面设置 ==========
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% ========== 自定义命令用于填写个人信息 ==========
+\newcommand{\studentname}{您的姓名}
+\newcommand{\studentid}{您的学号}
+\newcommand{\studentemail}{your.email@example.com}
+\newcommand{\studentphone}{您的电话}
+\newcommand{\studentuniversity}{您的大学}
+\newcommand{\studentmajor}{您的专业}
+
+% ========== 项目相关信息（可选，用于简历中引用） ==========
+\newcommand{\projecttitle}{基于深度学习的开源项目漏洞检测工具}
+\newcommand{\communityname}{Apache Software Foundation}
+\newcommand{\mentorname}{李导师}
+\newcommand{\mentoremail}{liteacher@apache.org}
+\newcommand{\projectdifficulty}{进阶}
+\newcommand{\projectreward}{12000元}
+
+% ========== 引入配置文件 ==========
+\IfFileExists{config.tex}{\input{config.tex}}{}
+
+% ========== 基础超链接设置 ==========
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,        % 目录链接设为黑色
+    filecolor=magenta,      
+    urlcolor=osppblue,      % 网址链接使用OSPP蓝色
+    pdftitle={OSPP 2025 个人简历 - \studentname},
+    pdfauthor={\studentname},
+}
+
+% ========== 页眉页脚设置 ==========
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small OSPP 2025 个人简历}
+\lhead{\small \studentname}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ========== 标题格式设置 ==========
+\titleformat{\section}{\Large\bfseries\color{osppblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{osppdark}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{osppgray}}{\thesubsubsection}{1em}{}
+
+\begin{document}
+
+% ========== 标题页 ==========
+\begin{titlepage}
+    \centering
+    
+    % OSPP Logo 和官方标识
+    \vspace{0.5cm}
+    
+    % OSPP图标（如果存在）
+    \IfFileExists{image/OSPP.png}{
+        \includegraphics[width=2.5cm]{image/OSPP.png} \\
+        \vspace{0.5cm}
+    }{}
+    
+    % 简历标题
+    {\Huge \textcolor{osppblue}{\textbf{个人简历}}} \\
+    \vspace{0.3cm}
+    {\LARGE \textcolor{osppblue}{\textbf{Personal Resume}}} \\
+    \vspace{0.2cm}
+    {\Large \textcolor{osppgray}{\textbf{OSPP 2025 申请}}} \\
+    
+    \vspace{2cm}
+    
+    % 申请人信息
+    {\huge \textcolor{osppdark}{\textbf{\studentname}}}
+    
+    \vspace{1cm}
+    
+    % 基本信息表格
+    \begin{tabular}{rl}
+        \textbf{\textcolor{osppblue}{学号：}} & \studentid \\[0.2cm]
+        \textbf{邮箱：} & \studentemail \\[0.1cm]
+        \textbf{电话：} & \studentphone \\[0.1cm]
+        \textbf{大学：} & \studentuniversity \\[0.1cm]
+        \textbf{专业：} & \studentmajor \\[0.2cm]
+        \textbf{GitHub：} & \url{https://github.com/yourusername} \\[0.1cm]
+        \textbf{Gitee：} & \url{https://gitee.com/yourusername} \\
+    \end{tabular}
+    
+    \vfill
+    
+    {\large \textcolor{osppgray}{更新日期：\today}}
+    
+\end{titlepage}
+
+% ========== 目录 ==========
+\tableofcontents
+\newpage
+
+\section{基本信息}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{rl}
+    \textbf{姓名：} & \studentname \\[0.2cm]
+    \textbf{性别：} & 男/女 \\[0.1cm]
+    \textbf{年龄：} & XX岁 \\[0.1cm]
+    \textbf{邮箱：} & \studentemail \\[0.1cm]
+    \textbf{电话：} & \studentphone \\[0.1cm]
+    \textbf{学校：} & \studentuniversity \\[0.1cm]
+    \textbf{专业：} & \studentmajor \\[0.1cm]
+    \textbf{GitHub：} & \url{https://github.com/yourusername} \\[0.1cm]
+    \textbf{Gitee：} & \url{https://gitee.com/yourusername} \\
+\end{tabular}
+\end{table}
+
+\section{教育背景}
+
+\subsection{学历信息}
+\begin{itemize}
+    \item \textbf{2021年9月 - 2025年6月：}\studentuniversity，\studentmajor，本科
+    \item \textbf{主要课程：}数据结构与算法、软件工程、数据库系统、计算机网络、操作系统、编译原理、人工智能基础等
+    \item \textbf{GPA：}X.XX/4.0（排名：XX/XXX）
+    \item \textbf{英语水平：}CET-6（分数：XXX）/ 雅思X.X分 / 托福XXX分
+\end{itemize}
+
+\subsection{学术成果}
+\begin{itemize}
+    \item 参与导师科研项目：《XXXX研究》，负责算法设计与实现
+    \item 发表学术论文：《XXXX》，第一作者，发表于XX会议/期刊
+    \item 获得学术奖项：XX奖学金、优秀学生、三好学生等
+\end{itemize}
+
+\section{技术技能}
+
+\subsection{编程语言}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|l|}
+\hline
+\textbf{语言} & \textbf{熟练} & \textbf{中等} & \textbf{了解} & \textbf{使用年限} & \textbf{主要项目经验} \\
+\hline
+Python & \checkmark & & & 3年 & Web开发、数据分析 \\
+\hline
+Java & & \checkmark & & 2年 & 后端开发、Android应用 \\
+\hline
+JavaScript & & \checkmark & & 2年 & 前端开发、Node.js后端 \\
+\hline
+C++ & & & \checkmark & 1年 & 算法竞赛、系统编程 \\
+\hline
+Go & & & \checkmark & 0.5年 & 微服务开发、API设计 \\
+\hline
+\end{tabular}
+\caption{编程语言技能评估}
+\end{table}
+
+\subsection{开发框架与工具}
+
+\subsubsection{前端技术}
+\begin{itemize}
+    \item \textbf{框架：}React, Vue.js, Angular（基础）
+    \item \textbf{样式：}Bootstrap, Tailwind CSS, Ant Design
+    \item \textbf{构建工具：}Webpack, Vite, Create React App
+    \item \textbf{状态管理：}Redux, Vuex, MobX
+\end{itemize}
+
+\subsubsection{后端技术}
+\begin{itemize}
+    \item \textbf{Python：}Django, Flask, FastAPI
+    \item \textbf{Java：}Spring Boot, Spring MVC, MyBatis
+    \item \textbf{Node.js：}Express, Koa, NestJS
+    \item \textbf{API设计：}RESTful API, GraphQL, gRPC
+\end{itemize}
+
+\subsubsection{数据库技术}
+\begin{itemize}
+    \item \textbf{关系型：}MySQL, PostgreSQL, SQLite
+    \item \textbf{非关系型：}MongoDB, Redis, Elasticsearch
+    \item \textbf{数据分析：}Pandas, NumPy, Matplotlib, Jupyter
+\end{itemize}
+
+\subsubsection{开发工具}
+\begin{itemize}
+    \item \textbf{版本控制：}Git, GitHub, GitLab, SVN
+    \item \textbf{IDE/编辑器：}VS Code, IntelliJ IDEA, PyCharm, Vim
+    \item \textbf{容器化：}Docker, Docker Compose, Kubernetes（基础）
+    \item \textbf{CI/CD：}GitHub Actions, Jenkins, GitLab CI
+    \item \textbf{云平台：}AWS（基础）, 腾讯云, 阿里云
+\end{itemize}
+
+\section{项目经验}
+
+\subsection{开源贡献}
+% 必填项：开源平台的用户ID（GitHub、Gitee等）
+% 应该尽可能和自己所申请的项目相关
+
+\subsubsection{项目1：为Apache OpenWhisk贡献代码}
+\begin{itemize}
+    \item \textbf{时间：}2024年6月 - 2024年10月
+    \item \textbf{角色：}Active Contributor
+    \item \textbf{贡献内容：}
+    \begin{itemize}
+        \item 修复了CLI工具中的3个关键bug，提升了用户体验
+        \item 添加了新的认证模块，支持OAuth 2.0认证
+        \item 优化了容器镜像构建流程，减少镜像大小30\%
+        \item 编写了详细的API文档和使用教程
+    \end{itemize}
+    \item \textbf{技术栈：}Go, Docker, Kubernetes, OpenAPI
+    \item \textbf{成果：}提交了12个Pull Request，8个被合并，获得社区好评
+    \item \textbf{项目链接：}\url{https://github.com/apache/openwhisk}
+    \item \textbf{个人贡献：}\url{https://github.com/apache/openwhisk/pulls?q=author:yourusername}
+\end{itemize}
+
+\subsubsection{项目2：参与React生态项目开发}
+\begin{itemize}
+    \item \textbf{时间：}2024年3月 - 2024年8月
+    \item \textbf{角色：}Community Member
+    \item \textbf{贡献内容：}
+    \begin{itemize}
+        \item 为React Router添加了TypeScript类型定义
+        \item 翻译了官方文档的中文版本
+        \item 参与Issue讨论，帮助新手解决问题
+        \item 编写了多个使用示例和最佳实践
+    \end{itemize}
+    \item \textbf{技术栈：}React, TypeScript, JavaScript
+    \item \textbf{社区活动：}参与了3次线上会议，分享技术经验
+\end{itemize}
+
+\subsection{个人项目}
+
+\subsubsection{项目1：智能学习助手系统}
+\begin{itemize}
+    \item \textbf{时间：}2024年1月 - 2024年5月
+    \item \textbf{项目描述：}基于机器学习的个性化学习推荐系统
+    \item \textbf{主要功能：}
+    \begin{itemize}
+        \item 学习内容个性化推荐
+        \item 学习进度跟踪和分析
+        \item 智能错题本和复习提醒
+        \item 学习效果可视化分析
+    \end{itemize}
+    \item \textbf{技术栈：}
+    \begin{itemize}
+        \item \textbf{后端：}Python, Django, PostgreSQL, Redis
+        \item \textbf{前端：}React, TypeScript, Ant Design
+        \item \textbf{机器学习：}scikit-learn, TensorFlow, pandas
+        \item \textbf{部署：}Docker, Nginx, AWS EC2
+    \end{itemize}
+    \item \textbf{项目亮点：}
+    \begin{itemize}
+        \item 实现了协同过滤推荐算法，准确率达到85\%
+        \item 支持10万+用户并发访问
+        \item 获得校内创新大赛一等奖
+    \end{itemize}
+    \item \textbf{代码链接：}\url{https://github.com/yourusername/smart-learning-assistant}
+    \item \textbf{演示地址：}\url{https://demo.smartlearning.com}
+\end{itemize}
+
+\subsubsection{项目2：分布式任务调度系统}
+\begin{itemize}
+    \item \textbf{时间：}2023年9月 - 2023年12月
+    \item \textbf{项目描述：}高性能的分布式任务调度和执行系统
+    \item \textbf{主要功能：}
+    \begin{itemize}
+        \item 任务的分布式调度和负载均衡
+        \item 任务执行状态监控和日志收集
+        \item 支持多种任务类型（定时、延时、循环）
+        \item 故障恢复和数据一致性保证
+    \end{itemize}
+    \item \textbf{技术栈：}Go, etcd, gRPC, Prometheus, Docker
+    \item \textbf{性能指标：}
+    \begin{itemize}
+        \item 支持每秒处理1000+任务
+        \item 任务调度延迟 < 100ms
+        \item 系统可用性 > 99.9\%
+    \end{itemize}
+    \item \textbf{代码链接：}\url{https://github.com/yourusername/distributed-scheduler}
+\end{itemize}
+
+\subsubsection{项目3：区块链投票系统}
+\begin{itemize}
+    \item \textbf{时间：}2023年6月 - 2023年8月
+    \item \textbf{项目描述：}基于以太坊的去中心化投票DApp
+    \item \textbf{技术栈：}Solidity, Web3.js, React, MetaMask, IPFS
+    \item \textbf{特点：}投票结果不可篡改，完全透明公开
+    \item \textbf{代码链接：}\url{https://github.com/yourusername/blockchain-voting}
+\end{itemize}
+
+\section{竞赛与获奖}
+
+\subsection{编程竞赛}
+\begin{itemize}
+    \item \textbf{2024年10月：}ACM-ICPC亚洲区域赛，银牌
+    \item \textbf{2024年5月：}Google Code Jam，全球前1000名
+    \item \textbf{2023年11月：}蓝桥杯程序设计大赛，省级一等奖
+    \item \textbf{2023年4月：}CCF-CSP认证，满分（300分）
+\end{itemize}
+
+\subsection{创新创业比赛}
+\begin{itemize}
+    \item \textbf{2024年6月：}全国大学生计算机设计大赛，国家级二等奖
+    \item \textbf{2024年3月：}校级创新创业大赛，一等奖
+    \item \textbf{2023年10月：}"互联网+"大学生创新创业大赛，省级铜奖
+\end{itemize}
+
+\subsection{学术奖项}
+\begin{itemize}
+    \item \textbf{2024年：}国家奖学金获得者
+    \item \textbf{2023年：}省级三好学生
+    \item \textbf{2023年：}校级优秀学生干部
+    \item \textbf{2022-2024年：}连续三年获得校级一等奖学金
+\end{itemize}
+
+\section{实习与工作经历}
+
+\subsection{软件开发实习}
+\begin{itemize}
+    \item \textbf{公司：}腾讯科技（深圳）有限公司
+    \item \textbf{时间：}2024年6月 - 2024年8月
+    \item \textbf{职位：}后端开发实习生
+    \item \textbf{部门：}微信事业群 - 基础架构部
+    \item \textbf{工作内容：}
+    \begin{itemize}
+        \item 参与微信支付核心系统的开发和优化
+        \item 负责API网关性能优化，QPS提升20\%
+        \item 开发分布式限流组件，应用于多个业务线
+        \item 参与系统监控和告警机制的完善
+    \end{itemize}
+    \item \textbf{技术栈：}Go, Redis, MySQL, Kafka, Prometheus
+    \item \textbf{实习评价：}获得优秀实习生称号，收到return offer
+\end{itemize}
+
+\subsection{开源社区兼职}
+\begin{itemize}
+    \item \textbf{组织：}Linux Foundation
+    \item \textbf{时间：}2024年1月 - 至今
+    \item \textbf{角色：}Community Volunteer
+    \item \textbf{工作内容：}
+    \begin{itemize}
+        \item 帮助维护Kubernetes官方文档
+        \item 参与新手导师计划，指导初学者
+        \item 翻译技术文档和博客文章
+        \item 组织线下技术meetup活动
+    \end{itemize}
+\end{itemize}
+
+\section{社团活动与领导经历}
+
+\subsection{学生组织}
+\begin{itemize}
+    \item \textbf{2023年9月 - 2024年6月：}计算机学院学生会技术部部长
+    \begin{itemize}
+        \item 负责学院官网和信息系统的开发维护
+        \item 组织技术培训和编程竞赛
+        \item 管理技术部15名成员，协调各项技术支持工作
+    \end{itemize}
+    \item \textbf{2022年9月 - 2023年6月：}ACM算法协会副会长
+    \begin{itemize}
+        \item 组织每周算法训练和竞赛辅导
+        \item 邀请业界专家进行技术分享
+        \item 协会成员在各类竞赛中获奖率提升40\%
+    \end{itemize}
+\end{itemize}
+
+\subsection{志愿服务}
+\begin{itemize}
+    \item \textbf{开源软件推广：}参与多个开源项目的推广活动，累计服务时长100+小时
+    \item \textbf{技术公益：}为农村中学提供编程教育支持，教授Python基础课程
+    \item \textbf{社区服务：}疫情期间开发健康码查验小程序，服务社区居民5000+人
+\end{itemize}
+
+\section{技能证书}
+
+\subsection{技术认证}
+\begin{itemize}
+    \item \textbf{AWS Certified Solutions Architect - Associate}（2024年8月）
+    \item \textbf{Oracle Certified Professional Java SE 11 Developer}（2024年3月）
+    \item \textbf{Microsoft Azure Fundamentals AZ-900}（2023年12月）
+    \item \textbf{Google Cloud Associate Cloud Engineer}（2023年9月）
+\end{itemize}
+
+\subsection{语言证书}
+\begin{itemize}
+    \item \textbf{英语：}CET-6（分数：580）/ 雅思7.0分 / 托福95分
+    \item \textbf{日语：}JLPT N2级（计划中）
+\end{itemize}
+
+\section{个人特长与兴趣}
+
+\subsection{技术兴趣}
+\begin{itemize}
+    \item \textbf{开源软件：}关注云原生、容器化、微服务等技术发展
+    \item \textbf{算法研究：}热衷于算法优化和数据结构设计
+    \item \textbf{人工智能：}学习机器学习和深度学习技术
+    \item \textbf{区块链：}研究去中心化应用和智能合约开发
+\end{itemize}
+
+\subsection{个人爱好}
+\begin{itemize}
+    \item \textbf{运动：}篮球、跑步、健身，参加过校内篮球联赛
+    \item \textbf{音乐：}吉他演奏，参加过校内音乐节表演
+    \item \textbf{摄影：}风景摄影爱好者，作品曾获校级摄影比赛二等奖
+    \item \textbf{阅读：}技术书籍、科幻小说、人物传记
+\end{itemize}
+
+\section{自我评价}
+
+\subsection{技术能力}
+\begin{itemize}
+    \item 具有扎实的计算机基础知识和编程能力
+    \item 熟悉多种编程语言和开发框架
+    \item 有丰富的项目开发和开源贡献经验
+    \item 关注技术发展趋势，学习能力强
+\end{itemize}
+
+\subsection{个人品质}
+\begin{itemize}
+    \item \textbf{责任心强：}对承诺的任务能够按时高质量完成
+    \item \textbf{团队合作：}具有良好的沟通能力和团队协作精神
+    \item \textbf{自驱力强：}主动学习新技术，积极参与开源社区
+    \item \textbf{抗压能力：}能够在高压环境下保持高效工作状态
+\end{itemize}
+
+\subsection{职业规划}
+\begin{itemize}
+    \item \textbf{短期目标：}通过OSPP项目深入学习开源技术，提升技术水平
+    \item \textbf{中期目标：}成为某个开源项目的核心贡献者，在技术社区有一定影响力
+    \item \textbf{长期目标：}在云计算或人工智能领域成为技术专家，推动开源生态发展
+\end{itemize}
+
+\section{联系方式}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{rl}
+    \textbf{邮箱：} & \studentemail \\[0.1cm]
+    \textbf{电话：} & \studentphone \\[0.1cm]
+    \textbf{微信：} & 同手机号 \\[0.1cm]
+    \textbf{GitHub：} & \url{https://github.com/yourusername} \\[0.1cm]
+    \textbf{Gitee：} & \url{https://gitee.com/yourusername} \\[0.1cm]
+    \textbf{LinkedIn：} & \url{https://linkedin.com/in/yourusername} \\[0.1cm]
+    \textbf{个人博客：} & \url{https://yourblog.com} \\[0.1cm]
+    \textbf{技术公众号：} & YourTechAccount \\
+\end{tabular}
+\end{table}
+
+\vfill
+
+\begin{center}
+    \textcolor{osppgray}{\textit{感谢您花时间阅读我的简历，期待有机会为开源社区贡献力量！}}
+\end{center}
+
+\end{document} 

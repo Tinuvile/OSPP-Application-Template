@@ -12,19 +12,25 @@
 - 🎯 **官方标识**：集成 OSPP 官方色彩和标识
 - 📦 **丰富示例**：包含各种常用的 LaTeX 示例和模板
 - 🎨 **美观样式**：使用彩色文本框、图标和现代化排版
+- 📄 **独立简历**：个人简历独立为单独的 PDF 文件
+- 🔧 **错误修复**：修复了编译错误，去除了不必要的边框
 
 ## 📁 文件结构
 
 ```
 OSPP-Application-Template/
 ├── ospp-application.tex    # 主模板文件
+├── personal-resume.tex     # 独立个人简历文件 ✨新增
 ├── config.tex             # 配置文件（个人信息设置）
 ├── examples.tex           # 示例代码库
 ├── README.md              # 使用说明
 ├── Makefile              # Linux/macOS 编译脚本
 ├── compile.bat           # Windows 编译脚本
+├── image/                # 图片资源目录
+│   └── OSPP.png          # OSPP官方图标
 └── output/               # 编译输出目录
-    └── ospp-application.pdf
+    ├── ospp-application.pdf
+    └── personal-resume.pdf ✨新增
 ```
 
 ## 🚀 快速开始
@@ -40,19 +46,39 @@ OSPP-Application-Template/
 1. **使用编译脚本（推荐）**：
 
    - Windows: 双击运行 `compile.bat`
-   - Linux/macOS: 运行 `make` 或 `make xepdf`
+   - Linux/macOS: 运行 `make` 或 `make all`
 
-2. **手动编译**：
+2. **单独编译主申请书**：
 
    ```bash
-   pdflatex ospp-application.tex
-   pdflatex ospp-application.tex  # 第二次编译生成目录
+   # Linux/macOS
+   make main
+
+   # Windows 手动编译
+   xelatex -output-directory=output ospp-application.tex
+   xelatex -output-directory=output ospp-application.tex
    ```
 
-3. **使用 XeLaTeX（推荐，中文支持更好）**：
+3. **单独编译个人简历**：
+
    ```bash
-   xelatex ospp-application.tex
-   xelatex ospp-application.tex
+   # Linux/macOS
+   make resume
+
+   # Windows 手动编译
+   xelatex -output-directory=output personal-resume.tex
+   xelatex -output-directory=output personal-resume.tex
+   ```
+
+4. **使用 XeLaTeX（推荐，中文支持更好）**：
+
+   ```bash
+   # 编译所有文件
+   make xeall
+
+   # 或分别编译
+   make xemain    # 主申请书
+   make xeresume  # 个人简历
    ```
 
 ## ⚙️ 个人信息配置
